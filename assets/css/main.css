@@ -72,6 +72,12 @@ table {
 
 a {
   color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-contrast);
+  background-color: var(--accent);
 }
 
 button {

@@ -1,13 +1,13 @@
 <footer class="footer">
   <div class="footer__inner">
-    {{ if $.Site.Copyright }}
+    {{ if and $.Site.Copyright $.Site.Params.Email }}
       <div class="copyright copyright--user">
         <span>{{ $.Site.Copyright | safeHTML }}</span>
+        <span>:: {{ $.Site.Params.Email | safeHTML }}</span>
     {{ else }}
       <div class="copyright">
         <span>© {{ now.Year }} Powered by <a href="https://gohugo.io">Hugo</a></span>
     {{ end }}
-      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
       </div>
   </div>
 </footer>
