@@ -1,0 +1,23 @@
+    <a class="portfolio-link" href="{{.RelPermalink}}">
+      <div class="portfolio-grid-item">
+          {{ if .Params.portfolioCover }}
+            {{ $alt := .Title | plainify | default " " }}
+            {{ with resources.Get .Params.portfolioCover }}
+              {{ $filter := images.Process "crop 500x500" }}
+              {{ with . | images.Filter $filter}}
+              <div>
+          <img class="portfolio-grid-item-image" src="{{ .RelPermalink }}" alt="{{ $alt }}" /> 
+              </div>
+              {{ end }}
+            {{ end }}
+          {{ end }}
+          <div class="portfolio-grid-item-name">
+            {{ .Title | markdownify }}
+            {{ if .Params.portfolioIcons}}
+              {{ range .Params.portfolioIcons }}
+                <img class="portfolio-grid-item-icon" height="14" width="14" src={{ . | absURL }} />
+              {{ end }}
+            {{ end }}
+          </div>
+      </div>
+    </a>

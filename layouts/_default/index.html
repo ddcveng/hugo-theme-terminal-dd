@@ -5,7 +5,7 @@
     </div>
   {{ end }}
 
-  <h2>Recent blog posts</h2>
+  <h2>I should not be seeing this</h2>
 
   <div class="posts">
     {{ $isntDefault := not (or (eq (trim $.Site.Params.contentTypeName " ") "posts") (eq (trim $.Site.Params.contentTypeName " ") "")) }}
@@ -62,13 +62,4 @@
       </article>
     {{ end }}
   </div>
-<div class="links">
-  <h2>Links</h2>
-
-  <ul>
-    <li><a href="https://github.com/ddcveng">GitHub</a></li>
-    <li><a href="https://ddcveng.itch.io/">Itch</a></li>
-    <li>Curriculum Vitae (TBD) </li>
-  </ul>
-</div>
 {{ end }}

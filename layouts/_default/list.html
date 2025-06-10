@@ -4,52 +4,10 @@
       {{ . }}
     </div>
   {{ end }}
-  <div class="posts">
-    {{ range .Paginator.Pages }}
-      <article class="post-compact on-list">
-        <h3 class="post-title">
-          <a href="{{ .Permalink }}">{{ .Title | markdownify }}</a>
-        </h3>
 
-        <div class="">
-          {{- if .Date -}}
-            <time class="post-date">
-              {{- partial "post-date" . -}}
-            </time>
-          {{- end -}}
-
-          {{ if .Params.tags }}
-              {{ range .Params.tags }}
-              <a href="{{ (urlize (printf "tags/%s/" . )) | absLangURL }}">
-                #{{- . -}}
-              </a>&nbsp;
-              {{ end }}
-          {{ end }}
-        </div>
-
-
-        {{ partial "cover.html" . }}
-
-        {{ if $.Site.Params.enablePostContent }}
-        <div class="post-content">
-          {{ if .Params.showFullContent }}
-            {{ .Content }}
-          {{ else if .Description }}
-            <p>{{ .Description | markdownify }}</p>
-          {{ else }}
-            {{ .Summary }}
-          {{ end }}
-        </div>
-
-        {{ if not .Params.showFullContent }}
-          <div>
-            <a class="read-more button inline" href="{{ .RelPermalink }}">[{{ $.Site.Params.ReadMore }}]</a>
-          </div>
-        {{ end }}
-        {{ end }}
-      </article>
-    {{ end }}
-
-    {{ partial "pagination.html" . }}
-  </div>
+  {{ if eq (.Params.Type) "portfolio" }}
+    {{ partial "portfolio-list.html" . }}
+  {{ else }}
+    {{ partial "post-list.html" . }}
+  {{ end }}
 {{ end }}
