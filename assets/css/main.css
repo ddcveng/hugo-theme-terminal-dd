@@ -15,7 +15,7 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
-  word-break: break-word;
+  /* word-break: break-word; */
 }
 
 body {
